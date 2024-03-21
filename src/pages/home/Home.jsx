@@ -4,20 +4,19 @@ import { useEffect, useState } from "react";
 import "./home.scss";
 import "bootstrap/dist/css/bootstrap.css";
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const [panel, setPanel] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchPanel = async () => {
       try {
         const res = await fetch("http://localhost:3000/products");
         const Data = await res.json();
-        setProducts(Data);
-        console.log(Data);
+        setPanel(Data);
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchProducts();
+    fetchPanel();
   }, []);
   return (
     <>
@@ -45,28 +44,28 @@ const Home = () => {
                 </th>
               </tr>
             </thead>
+            {/* <tbody>
+              <tr>
+                <td className="fw-bold text-start">Товар 0 </td>
+                <td>21341472702202201</td>
+                <td>XIAOMI</td>
+                <td>10$</td>
+                <td>8$</td>
+              </tr>
+            </tbody> */}
             <tbody>
-              <tr>
-                <td className="fw-bold text-start">Товар 0 </td>
-                <td>21341472702202201</td>
-                <td>XIAOMI</td>
-                <td>10$</td>
-                <td>8$</td>
-              </tr>
-              <tr>
-                <td className="fw-bold text-start">Товар 0 </td>
-                <td>21341472702202201</td>
-                <td>XIAOMI</td>
-                <td>10$</td>
-                <td>8$</td>
-              </tr>
-              <tr>
-                <td className="fw-bold text-start">Товар 0 </td>
-                <td>21341472702202201</td>
-                <td>XIAOMI</td>
-                <td>10$</td>
-                <td>8$</td>
-              </tr>
+              {panel.length > 0 && (
+                <div>
+                  {panel.map((panel) => (
+                    <div>
+                      <td>Товар : {panel.id}</td>
+                      <td>{panel.brand}</td>
+                      <td>{panel.price}</td>
+                      <td>{panel.discountPercentage}</td>
+                    </div>
+                  ))}
+                </div>
+              )}
             </tbody>
           </table>
         </div>
