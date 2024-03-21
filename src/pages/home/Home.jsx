@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
+import { ListGroup } from "react-bootstrap";
 import "./home.scss";
 import axios from "axios";
 
@@ -37,6 +38,7 @@ const Home = () => {
   // DELETE finish //////////////////////////////////
 
   // SEARCH start //////////////////////////////////
+  const [searchTerm, setSearchTerm] = useState("");
 
   // SEARCH finish //////////////////////////////////
 
@@ -60,12 +62,24 @@ const Home = () => {
         <div className="content mt-4">
           <div className="d-flex justify-content-between bg-white p-4  ">
             <h3>Все товары ({panel.length})</h3>
-            <input
-              className="form-control w-25"
-              required
-              type="text"
-              placeholder="Поиск"
-            />
+            <Form>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  type="text"
+                  placeholder="Qidiruv..."
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </Form.Group>
+            </Form>
+            <ListGroup>
+              {panel
+                .filter((panel) =>
+                  panel.brand.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map((panel) => (
+                  <ListGroup.Item key={panel.id}>{panel.brand}</ListGroup.Item>
+                ))}
+            </ListGroup>
           </div>
           <table className="table table-hover">
             <thead>
