@@ -1,6 +1,7 @@
 import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useEffect, useState } from "react";
+import "./home.scss";
 import "bootstrap/dist/css/bootstrap.css";
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -19,54 +20,58 @@ const Home = () => {
     fetchProducts();
   }, []);
   return (
-    <div>
+    <>
       <Sidebar />
-      {/* <Header />
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Наименование</th>
-            <th scope="col">Артикул</th>
-            <th scope="col">Бренд</th>
-            <th scope="col">Цена</th>
-            <th scope="col">скидкой</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table> */}
-      <div className="table">
-        {products.length > 0 && (
-          <>
-            {products.map((product) => (
-              <div className="produ">
-                <td className="td1">Товар : {product.id}</td>
-                <td className="td2">{product.brand}</td>
-                <td className="td3">{product.price}</td>
-                <td className="td4">{product.discountPercentage}</td>
-              </div>
-            ))}
-          </>
-        )}
+      <Header />
+      <div className="for_bg">
+        <div className="content">
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th className="text-body-tertiary text-start" scope="col">
+                  Наименование
+                </th>
+                <th className="text-body-tertiary" scope="col">
+                  Артикул
+                </th>
+                <th className="text-body-tertiary" scope="col">
+                  Бренд
+                </th>
+                <th className="text-body-tertiary" scope="col">
+                  Цена
+                </th>
+                <th className="text-body-tertiary" scope="col">
+                  Цена со скидкой
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="fw-bold text-start">Товар 0 </td>
+                <td>21341472702202201</td>
+                <td>XIAOMI</td>
+                <td>10$</td>
+                <td>8$</td>
+              </tr>
+              <tr>
+                <td className="fw-bold text-start">Товар 0 </td>
+                <td>21341472702202201</td>
+                <td>XIAOMI</td>
+                <td>10$</td>
+                <td>8$</td>
+              </tr>
+              <tr>
+                <td className="fw-bold text-start">Товар 0 </td>
+                <td>21341472702202201</td>
+                <td>XIAOMI</td>
+                <td>10$</td>
+                <td>8$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
