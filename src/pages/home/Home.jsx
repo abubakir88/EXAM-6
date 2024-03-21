@@ -44,27 +44,19 @@ const Home = () => {
                 </th>
               </tr>
             </thead>
-            {/* <tbody>
-              <tr>
-                <td className="fw-bold text-start">Товар 0 </td>
-                <td>21341472702202201</td>
-                <td>XIAOMI</td>
-                <td>10$</td>
-                <td>8$</td>
-              </tr>
-            </tbody> */}
             <tbody>
               {panel.length > 0 && (
-                <div>
+                <>
                   {panel.map((panel) => (
-                    <div>
-                      <td>Товар : {panel.id}</td>
-                      <td>{panel.brand}</td>
-                      <td>{panel.price}</td>
-                      <td>{panel.discountPercentage}</td>
-                    </div>
+                    <tr>
+                      <th className="text-start"> Tovar {panel.id}</th>
+                      <th>{panel.rating}</th>
+                      <th>{panel.brand}</th>
+                      <th>{panel.price}</th>
+                      <th>{panel.stock}</th>
+                    </tr>
                   ))}
-                </div>
+                </>
               )}
             </tbody>
           </table>
