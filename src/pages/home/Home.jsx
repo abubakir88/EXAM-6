@@ -1,10 +1,44 @@
+import { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { useEffect, useState } from "react";
 import "./home.scss";
-import "bootstrap/dist/css/bootstrap.css";
+import axios from "axios";
+
+///// MODAL /////
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+/////
+
 const Home = () => {
+  /// MODAL //////
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  ///
+
   const [panel, setPanel] = useState([]);
+
+  // DELETE start //////////////////////////////////
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    const response = await axios.get("http://localhost:3000/products");
+    setPanel(response.data);
+  };
+
+  const deleteItem = async (id) => {
+    await axios.delete(`http://localhost:3000/products/${id}`);
+    fetchItems();
+  };
+  // DELETE finish //////////////////////////////////
+
+  // SEARCH start //////////////////////////////////
+
+  // SEARCH finish //////////////////////////////////
 
   useEffect(() => {
     const fetchPanel = async () => {
@@ -23,10 +57,9 @@ const Home = () => {
       <Sidebar />
       <Header />
       <div className="for_bg">
-        <div className="content">
+        <div className="content mt-4">
           <div className="d-flex justify-content-between bg-white p-4  ">
             <h3>Все товары ({panel.length})</h3>
-            <span></span>
             <input
               className="form-control w-25"
               required
@@ -61,15 +94,20 @@ const Home = () => {
               {panel.length > 0 && (
                 <>
                   {panel.map((panel) => (
-                    <tr>
+                    <tr key={panel.id}>
                       <th className="text-start"> Товар {panel.id}</th>
                       <th className="fw-normal">{panel.rating}</th>
                       <th className="fw-normal">{panel.brand}</th>
                       <th className="fw-normal">{panel.price}</th>
                       <th className="fw-normal">{panel.stock}</th>
                       <th className="d-flex gap-1">
-                        <button className="btn btn-primary">edit</button>
-                        <button className="btn btn-danger">delete</button>
+                        <button className="btn btn-primary">Edit</button>
+                        <Button
+                          variant="danger "
+                          onClick={() => deleteItem(panel.id)}
+                        >
+                          Delete
+                        </Button>
                       </th>
                     </tr>
                   ))}
@@ -78,7 +116,78 @@ const Home = () => {
             </tbody>
           </table>
         </div>
-        <button className="btn btn-success text-start">+ Новый товар</button>
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          className="btn btn-success text-start"
+        >
+          + Новый товар
+        </Button>
+        <Modal backdrop="static" show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add Product</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Артикул</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Артикул"
+                  autoFocus
+                  required
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Бренд</Form.Label>
+                <Form.Control
+                  type="brand"
+                  placeholder="Artel milliy brand"
+                  autoFocus
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>Цена</Form.Label>
+                <Form.Control
+                  as="input"
+                  type="number"
+                  rows={3}
+                  placeholder="Цена"
+                />
+              </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>Цена со скидкой</Form.Label>
+                <Form.Control
+                  as="input"
+                  type="number"
+                  rows={3}
+                  placeholder="Цена со скидкой"
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );
