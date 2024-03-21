@@ -2,18 +2,13 @@
   background-color: #ccc;
   display: grid;
   place-items: center;
+  min-height: 650px;
   .content {
-    min-height: 400px;
-    width: 100%;
-    text-align: center;
-    table {
-      text-align: center;
-      margin-left: 220px;
-      margin-top: 140px;
-
-      max-width: 1179px;
-      border-radius: 12px;
-      width: 100%;
-    }
+    margin-left: 150px;
+    margin-top: 40px;
+    max-width: 1300px;
+    width: 90%;
+    border-radius: 12px;
+    overflow: hidden;
   }
 }

@@ -24,6 +24,16 @@ const Home = () => {
       <Header />
       <div className="for_bg">
         <div className="content">
+          <div className="d-flex justify-content-between bg-white p-4  ">
+            <h3>Все товары ({panel.length})</h3>
+            <span></span>
+            <input
+              className="form-control w-25"
+              required
+              type="text"
+              placeholder="Поиск"
+            />
+          </div>
           <table className="table table-hover">
             <thead>
               <tr>
@@ -42,6 +52,9 @@ const Home = () => {
                 <th className="text-body-tertiary" scope="col">
                   Цена со скидкой
                 </th>
+                <th className="text-body-tertiary" scope="col">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -49,11 +62,15 @@ const Home = () => {
                 <>
                   {panel.map((panel) => (
                     <tr>
-                      <th className="text-start"> Tovar {panel.id}</th>
-                      <th>{panel.rating}</th>
-                      <th>{panel.brand}</th>
-                      <th>{panel.price}</th>
-                      <th>{panel.stock}</th>
+                      <th className="text-start"> Товар {panel.id}</th>
+                      <th className="fw-normal">{panel.rating}</th>
+                      <th className="fw-normal">{panel.brand}</th>
+                      <th className="fw-normal">{panel.price}</th>
+                      <th className="fw-normal">{panel.stock}</th>
+                      <th className="d-flex gap-1">
+                        <button className="btn btn-primary">edit</button>
+                        <button className="btn btn-danger">delete</button>
+                      </th>
                     </tr>
                   ))}
                 </>
@@ -61,6 +78,7 @@ const Home = () => {
             </tbody>
           </table>
         </div>
+        <button className="btn btn-success text-start">+ Новый товар</button>
       </div>
     </>
   );

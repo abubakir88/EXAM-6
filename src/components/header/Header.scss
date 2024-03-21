@@ -1,6 +1,9 @@
 header {
-  display: flex;
   margin-left: 100px;
-  .logo {
+  .texts {
+    padding: 8px 30px;
+    p {
+      color: #b5b5c3;
+    }
   }
 }

@@ -24,24 +24,21 @@ const Sidebar = () => {
           </Link>
           <div className="side_btns">
             <NavLink to="/">
-              {/* <button> */}
               <img
                 className={modal1}
                 onClick={openModal1}
                 src={settings}
                 alt="settings"
               />
-              {/* </button> */}
             </NavLink>
-            <NavLink to="/modal">
-              {/* <button> */}
+            {/* <NavLink to="/modal"> */}
+            <NavLink to="/">
               <img
                 className={modal}
                 onClick={openModal}
                 src={shop}
                 alt="shop"
               />
-              {/* </button> */}
             </NavLink>
           </div>
         </div>

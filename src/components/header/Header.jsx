@@ -3,7 +3,12 @@ import "./Header.scss";
 const Header = () => {
   return (
     <>
-      <header></header>
+      <header>
+        <div className="texts">
+          <h4>Товары</h4>
+          <p>Главная / Товары</p>
+        </div>
+      </header>
     </>
   );
 };
