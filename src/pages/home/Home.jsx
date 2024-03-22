@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
-import ModalForm from "../../components/Modal";
+// import ModalForm from "../../components/Modal";
 import "./home.scss";
 import axios from "axios";
 
@@ -193,7 +193,6 @@ const Home = () => {
                 />
               </Form.Group>
             </Form>
-            {/* <ModalForm /> */}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
