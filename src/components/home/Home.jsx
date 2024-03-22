@@ -91,7 +91,7 @@ const Home = () => {
                 <Form.Group className="mb-3">
                   <Form.Control
                     type="text"
-                    placeholder="Qidiruv..."
+                    placeholder="Search with ID"
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </Form.Group>
