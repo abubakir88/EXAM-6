@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "../../scss/Add.scss";
+import "./add.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Sidebar from "./Sidebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 const Add = ({ user }) => {
   const [post, setPost] = useState([
     {

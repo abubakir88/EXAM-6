@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/header/Header";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Header from "../header/Header";
+import Sidebar from "../Sidebar/Sidebar";
+import { Link } from "react-router-dom";
 // import ModalForm from "../../components/Modal";
 import "./home.scss";
 import axios from "axios";
@@ -8,7 +9,7 @@ import axios from "axios";
 ///// MODAL /////
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
+// import Modal from "react-bootstrap/Modal";
 /////
 
 // LOADER //////
@@ -16,9 +17,9 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 // LOADER //////
 const Home = () => {
   /// MODAL //////
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
   ///
 
   const [panel, setPanel] = useState([]);
@@ -157,14 +158,12 @@ const Home = () => {
               {/* </tbody> */}
             </table>
           </div>
-          <Button
-            variant="primary"
-            onClick={handleShow}
-            className="btn btn-success text-start"
-          >
-            + Новый товар
-          </Button>
-          <Modal backdrop="static" show={show} onHide={handleClose}>
+          <Link to="/Add">
+            <Button variant="primary" className="btn btn-success mt-5 ">
+              + Новый товар
+            </Button>
+          </Link>
+          {/* <Modal backdrop="static" show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Add Product</Modal.Title>
             </Modal.Header>
@@ -228,7 +227,7 @@ const Home = () => {
                 Save Changes
               </Button>
             </Modal.Footer>
-          </Modal>
+          </Modal> */}
         </div>
       )}
     </>
