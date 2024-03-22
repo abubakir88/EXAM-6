@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { ListGroup } from "react-bootstrap";
+import ModalForm from "../../components/Modal";
 import "./home.scss";
 import axios from "axios";
 
@@ -59,7 +59,7 @@ const Home = () => {
       <Sidebar />
       <Header />
       <div className="for_bg">
-        <div className="content mt-4">
+        <div className="content mt-4 w-75">
           <div className="d-flex justify-content-between bg-white p-4  ">
             <h3>Все товары ({panel.length})</h3>
             <Form>
@@ -71,15 +71,6 @@ const Home = () => {
                 />
               </Form.Group>
             </Form>
-            <ListGroup>
-              {panel
-                .filter((panel) =>
-                  panel.brand.toLowerCase().includes(searchTerm.toLowerCase())
-                )
-                .map((panel) => (
-                  <ListGroup.Item key={panel.id}>{panel.brand}</ListGroup.Item>
-                ))}
-            </ListGroup>
           </div>
           <table className="table table-hover">
             <thead>
@@ -104,30 +95,40 @@ const Home = () => {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {panel.length > 0 && (
-                <>
-                  {panel.map((panel) => (
-                    <tr key={panel.id}>
-                      <th className="text-start"> Товар {panel.id}</th>
-                      <th className="fw-normal">{panel.rating}</th>
-                      <th className="fw-normal">{panel.brand}</th>
-                      <th className="fw-normal">{panel.price}</th>
-                      <th className="fw-normal">{panel.stock}</th>
-                      <th className="d-flex gap-1">
-                        <button className="btn btn-primary">Edit</button>
-                        <Button
-                          variant="danger "
-                          onClick={() => deleteItem(panel.id)}
-                        >
-                          Delete
-                        </Button>
-                      </th>
-                    </tr>
+            {/* <tbody> */}
+            {panel.length > 0 && (
+              <tbody>
+                {panel
+                  .filter((panel) =>
+                    panel.brand.toLowerCase().includes(searchTerm.toLowerCase())
+                  )
+                  .map((panel) => (
+                    <>
+                      <tr>
+                        <th className="text-start"> Товар {panel.id}</th>
+                        <th className="fw-normal">{panel.rating}</th>
+                        <th className="fw-normal">{panel.brand}</th>
+                        <th className="fw-normal">{panel.price}</th>
+                        <th className="fw-normal">{panel.stock}</th>
+                        <th className="d-flex gap-1">
+                          <button className="btn btn-primary">Edit</button>
+                          <Button
+                            variant="danger "
+                            onClick={() =>
+                              confirm("Are you sure you want to?")
+                                ? deleteItem(panel.id)
+                                : false
+                            }
+                          >
+                            Delete
+                          </Button>
+                        </th>
+                      </tr>
+                    </>
                   ))}
-                </>
-              )}
-            </tbody>
+              </tbody>
+            )}
+            {/* </tbody> */}
           </table>
         </div>
         <Button
@@ -192,12 +193,13 @@ const Home = () => {
                 />
               </Form.Group>
             </Form>
+            {/* <ModalForm /> */}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button type="submit" variant="primary" onClick={handleClose}>
               Save Changes
             </Button>
           </Modal.Footer>
