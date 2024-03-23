@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./add.scss";
-// import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 const Add = ({ user }) => {
   const addNew = async () => {
     try {
@@ -29,7 +29,7 @@ const Add = ({ user }) => {
 
   return (
     <div className="main">
-      {/* <Sidebar /> */}
+      <Sidebar />
       <form className="form">
         <div className="input_group">
           <label htmlFor="artikul" className="form-label">
