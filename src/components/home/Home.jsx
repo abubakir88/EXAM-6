@@ -54,7 +54,7 @@ const Home = () => {
       setLoading(false);
     }, 1000);
   }, []);
-  // LOSDER FINISH //////////////////////////////////
+  // LOADER FINISH //////////////////////////////////
 
   useEffect(() => {
     const fetchPanel = async () => {
@@ -91,7 +91,7 @@ const Home = () => {
                 <Form.Group className="mb-3">
                   <Form.Control
                     type="text"
-                    placeholder="Search with ID"
+                    placeholder="Search"
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </Form.Group>

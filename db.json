@@ -187,48 +187,31 @@
     },
     {
       "0": {
-        "id": "",
+        "id": "10",
+        "rating": "",
         "brand": "",
         "price": "",
-        "discountPercentage": ""
+        "stock": ""
       },
-      "id": "121",
-      "brand": "Ibrahim",
-      "price": "2007",
-      "discountPercentage": "222"
+      "id": "dbd4",
+      "rating": "12",
+      "brand": "asd",
+      "price": "213",
+      "stock": "123"
     },
     {
       "0": {
-        "id": "",
+        "id": "10",
+        "rating": "",
         "brand": "",
         "price": "",
-        "discountPercentage": ""
+        "stock": ""
       },
-      "id": "9e85"
-    },
-    {
-      "0": {
-        "id": "",
-        "brand": "",
-        "price": "",
-        "discountPercentage": ""
-      },
-      "id": "121",
-      "brand": "aaa",
-      "price": "121",
-      "discountPercentage": "12"
-    },
-    {
-      "0": {
-        "id": "",
-        "brand": "",
-        "price": "",
-        "discountPercentage": ""
-      },
-      "id": "1",
-      "brand": "aaa",
-      "price": "2",
-      "discountPercentage": "3"
+      "id": "e562",
+      "rating": "123",
+      "brand": "asd2",
+      "price": "1332",
+      "stock": "123"
     }
   ]
 }
